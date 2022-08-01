@@ -30,7 +30,15 @@ function createbook (event) {
   
   }
   
-
+function renderBooks() { 
+  let storedData = getStoredData(); 
+  storedData.forEach((data) => { 
+  booksCard.innerHTML += `<p>${data.title}</p> 
+                          <button>Remove</button> 
+                          <hr>` 
+  }); 
+} 
+renderBooks(); 
 
 
 
