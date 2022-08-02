@@ -1,20 +1,14 @@
-
 const addBookBnt   = document.getElementById('addBtn');
 const booksCard = document.querySelector('.display-books');
-const isbnField = document.querySelector('.isbn-field');
-let errorMsg = document.querySelector('.error');
+const errorMsg = document.querySelector('.error');
 
- let getsrored = localStorage.getItem('books');
+const getsrored = localStorage.getItem('books');
   let books = [];
-  if(getsrored){
+  if(getsrored) {
     books = JSON.parse(getsrored);
-  }else{
- 
+  } else {
   books = [];
- 
   }
-
- 
   function addBook(){
     const addedBook = {
       'title': document.getElementById('title').value,
