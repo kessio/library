@@ -1,6 +1,7 @@
 
 const addBookBnt   = document.getElementById('addBtn');
 const booksCard = document.querySelector('.display-books');
+const isbnField = document.querySelector('.isbn-field');
 
  let getsrored = localStorage.getItem('books');
   let books = [];
@@ -11,6 +12,7 @@ const booksCard = document.querySelector('.display-books');
   books = [];
  
   }
+
  
   function addBook(){
     const addedBook = {
@@ -21,15 +23,31 @@ const booksCard = document.querySelector('.display-books');
     return addedBook;
    }
 
+  function isbnNumber() {
+    let storeddata = JSON.parse(localStorage.getItem('books'));
+    let addedBooks = addBook();
+    const found = storeddata.find(element => element.isbn === addedBooks.isbn);
+    if(found){
+      const isbnalert =  document.createElement('span');
+      isbnalert.innerHTML = 'A book can not have the same ISBN number';
+      isbnField.append(isbnalert);
+     let  errormsg = "Exists";
+      return errormsg;
+    }
+
+  }
+
   addBookBnt.addEventListener('click', (e) => {
     e.preventDefault();
+   if(isbnNumber() !== "Exists"){
     books.push(addBook());
-   localStorage.setItem('books', JSON.stringify(books));
-   renderAddedBook();
-   
+    localStorage.setItem('books', JSON.stringify(books));
+    renderAddedBook();
+
+   }
+    
   });
 
-   
   function getStoredData() {
     let storeddata = JSON.parse(localStorage.getItem('books'));
    return storeddata;
