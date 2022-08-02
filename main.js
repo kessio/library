@@ -43,6 +43,7 @@ const getsrored = localStorage.getItem('books');
             localStorage.setItem('books', JSON.stringify(books));
             renderAddedBook();
             errorMsg.textContent = '';
+            document.getElementById('add-book').reset();
           }else{
             errorMsg.textContent = 'A book with the Same ISBN number Exists!';
             e.preventDefault();
