@@ -53,6 +53,18 @@ function renderBooks() {
 } 
 renderBooks(); 
 
+function removeBookUI() {
+  booksCard.addEventListener('click', (e) => {
+   let element = e.target
+   let isbnid=  e.target.id;
+   let booksList = getStoredData();
+   const newlist =  booksList.filter((items) => { return items.isbn !== isbnid });
+    element.parentElement.remove();
+   localStorage.setItem('books', JSON.stringify(newlist));
+
+  })
+}
+removeBookUI();
 
 
 
