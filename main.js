@@ -23,9 +23,10 @@ const booksCard = document.querySelector('.display-books');
 
   addBookBnt.addEventListener('click', (e) => {
     e.preventDefault();
-   // console.log(addBook(),books);
     books.push(addBook());
    localStorage.setItem('books', JSON.stringify(books));
+   renderAddedBook();
+   
   });
 
    
@@ -65,6 +66,17 @@ function removeBookUI() {
   })
 }
 removeBookUI();
+
+function renderAddedBook(){
+  const listBooks = addBook();
+      booksCard.innerHTML += `
+      <div class="card-container">
+      <h4>${listBooks.title}</h4> 
+      <p>${listBooks.author}</p>
+      <button id="${listBooks.isbn}" class="remove-book">Remove</button> 
+      <hr></div>`
+}
+
 
 
 
