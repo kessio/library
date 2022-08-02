@@ -2,6 +2,7 @@
 const addBookBnt   = document.getElementById('addBtn');
 const booksCard = document.querySelector('.display-books');
 const isbnField = document.querySelector('.isbn-field');
+let errorMsg = document.querySelector('.error');
 
  let getsrored = localStorage.getItem('books');
   let books = [];
@@ -28,24 +29,39 @@ const isbnField = document.querySelector('.isbn-field');
     let addedBooks = addBook();
     const found = storeddata.find(element => element.isbn === addedBooks.isbn);
     if(found){
-      const isbnalert =  document.createElement('span');
-      isbnalert.innerHTML = 'A book can not have the same ISBN number';
-      isbnField.append(isbnalert);
-     let  errormsg = "Exists";
-      return errormsg;
+      errorMsg.innerHTML = 'A book can not have the same ISBN number';
+    let  errormsg = "Exists";
+    return errormsg;
     }
 
   }
 
   addBookBnt.addEventListener('click', (e) => {
     e.preventDefault();
-   if(isbnNumber() !== "Exists"){
-    books.push(addBook());
-    localStorage.setItem('books', JSON.stringify(books));
-    renderAddedBook();
-
-   }
-    
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let isbn = document.getElementById('isbn').value;
+  
+    if(title.length !== 0) {
+      if(author.length !== 0) {
+        if(isbn.length !== 0) {
+          if(isbnNumber() !== "Exists"){
+            books.push(addBook());
+            localStorage.setItem('books', JSON.stringify(books));
+            renderAddedBook();
+          }
+        }else {
+          errorMsg.textContent = 'ISBN field must be filled in!';
+          e.preventDefault();
+        }
+      }else {
+        errorMsg.textContent = 'Author field must be filled in!';
+        e.preventDefault();
+      }
+    }else {
+      errorMsg.textContent = 'Book title must be filled in!';
+      e.preventDefault();
+    } 
   });
 
   function getStoredData() {
