@@ -29,7 +29,6 @@ let errorMsg = document.querySelector('.error');
     let addedBooks = addBook();
     const found = storeddata.find(element => element.isbn === addedBooks.isbn);
     if(found){
-      errorMsg.innerHTML = 'A book can not have the same ISBN number';
     let  errormsg = "Exists";
     return errormsg;
     }
@@ -49,6 +48,11 @@ let errorMsg = document.querySelector('.error');
             books.push(addBook());
             localStorage.setItem('books', JSON.stringify(books));
             renderAddedBook();
+            errorMsg.textContent = '';
+          }else{
+            errorMsg.textContent = 'A book with the Same ISBN number Exists!';
+            e.preventDefault();
+
           }
         }else {
           errorMsg.textContent = 'ISBN field must be filled in!';
