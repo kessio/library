@@ -3,22 +3,16 @@ const addBookBnt   = document.getElementById('addBtn');
 const booksCard = document.querySelector('.display-books');
 
  let getsrored = localStorage.getItem('books');
- //console.log(getsrored);
-  let books;
-  if(localStorage.getItem('book') === ''){
-  books = [];
+  let books = [];
+  if(getsrored){
+    books = JSON.parse(getsrored);
   }else{
-  books = JSON.parse(getsrored);
-  //console.log(books);
+ 
+  books = [];
+ 
   }
  
-  addBookBnt.addEventListener('click', (e) => {
-    e.preventDefault();
-    books.push(addBook());
-   // console.log(books);
-   localStorage.setItem('books', JSON.stringify(books));
-  });
-   function addBook(){
+  function addBook(){
     const addedBook = {
       'title': document.getElementById('title').value,
       'author': document.getElementById('author').value,
@@ -26,6 +20,15 @@ const booksCard = document.querySelector('.display-books');
     };
     return addedBook;
    }
+
+  addBookBnt.addEventListener('click', (e) => {
+    e.preventDefault();
+   // console.log(addBook(),books);
+    books.push(addBook());
+   localStorage.setItem('books', JSON.stringify(books));
+  });
+
+   
   function getStoredData() {
     let storeddata = JSON.parse(localStorage.getItem('books'));
    return storeddata;
@@ -35,17 +38,22 @@ const booksCard = document.querySelector('.display-books');
   
 function renderBooks() { 
   let storedData = getStoredData(); 
-  storedData.forEach((data) => { 
-  booksCard.innerHTML += `
-  <div class="card-container">
-  <h4>${data.title}</h4> 
-  <p>${data.author}</p>
-  <button id="${data.isbn}" class="remove-book">Remove</button> 
-  <hr></div>`
+  if(storedData !== null){
+    storedData.forEach((data) => { 
+      booksCard.innerHTML += `
+      <div class="card-container">
+      <h4>${data.title}</h4> 
+      <p>${data.author}</p>
+      <button id="${data.isbn}" class="remove-book">Remove</button> 
+      <hr></div>`
+      
+      }); 
+  }
   
-  }); 
 } 
 renderBooks(); 
+
+
 
 
 
