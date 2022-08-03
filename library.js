@@ -12,30 +12,8 @@ class Books {
 class UserInterface {
   // Loop books for display books 
   static displayBooks() {
-    const books = [
-      {
-      title: "Book 1",
-      author: "Author 1",
-      id: 1,
-    },
-    {
-      title: "Book 2",
-      author: "Author 2",
-      id: 2,
-    },
-    {
-      title: "Book 3",
-      author: "Author 3",
-      id: 3,
-    },
-    {
-      title: "Book 4",
-      author: "Author 4",
-      id: 4,
-    },
-  ];
-
-  books.forEach((book) => (UserInterface.renderBooks(book)));
+    const books = BookStorage.getLocalStorageBooks();
+    books.forEach((book) => (UserInterface.renderBooks(book)));
 
   }
 
@@ -59,6 +37,35 @@ class UserInterface {
 }
 
 // LocalSTorage class
+class BookStorage {
+  // Get book from local storage
+  static getLocalStorageBooks() {
+    let bookks;
+    if(localStorage.getItem('books') === 'null') {
+      bookks = [];
+    }else {
+      bookks = JSON.parse(localStorage.getItem('books'));
+      return bookks;
+    }
+  }
+
+  // Add book to local storage
+  static addBookToLocalStorage(book) {
+    const books = BookStorage.getLocalStorageBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  // Remove book from local storage
+  static RemoveBookFromLocalStorage(button) {
+    // console.log(button.id)
+    const books = BookStorage.getLocalStorageBooks();
+    const filteredBooks = books.filter((book) => book.id !== button.id);
+    // console.log(filteredBooks)
+    // console.log(book.id)
+    localStorage.setItem('books', JSON.stringify(filteredBooks));
+  }
+}
 // Events: Render on page load
 document.addEventListener('DOMContentLoaded', UserInterface.displayBooks());
 
@@ -75,6 +82,9 @@ form.addEventListener('submit', (e) => {
 
   // Render the books added
   UserInterface.renderBooks(addedBooks);
+
+  // Add book to local storage
+  BookStorage.addBookToLocalStorage(addedBooks);
 })
 // Events Remove books
 
@@ -82,7 +92,11 @@ const removeBook = document.querySelectorAll('.delete-btn');
 removeBook.forEach((element) => {
   element.addEventListener('click', (e) => {
     const button = e.target;
+    console.log(button)
     button.parentElement.parentElement.remove();
+
+    // Remove book from local storage
+    BookStorage.RemoveBookFromLocalStorage(button);
 
   })
 })
