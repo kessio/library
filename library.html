@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="library.css">
 </head>
 <body>
-    <div class="books-container">
+    <nav>
+        <div class="nav-brand">Awesome Books</div>
+        <div class="navigation-menu">
+            <ul class="nav-list">
+                <li><a href="#">List</a></li>
+                <li><a href="#">Add New</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container active">
         <table class="display-books">
             <thead>
                 <h1>
@@ -16,30 +26,44 @@
                 </h1>
             </thead>
            <tbody class="book-details">
-           
            </tbody>
         </table>
         <hr>
-        <form action="#" id="add-book">
-            <div class="form-heading">
-                <h1>
-                    Add a new book
-                </h1>
+        </div>
+        <div class="container ">
+            <form action="#" id="add-book">
+                <div class="form-heading">
+                    <h1>
+                        Add a new book
+                    </h1>
+                </div>
+                <div class="input-fields-container">
+                    <div class="title-field">
+                        <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
+                    </div>
+                    <div class="author-field">
+                        <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
+                    </div>
+                    <button type="submit" id="addBtn">Add</button>
+                </div> 
+            </form>
+        </div>
+        <div class="container">
+            <h1>Contact information</h1>
+            <div class="contact-details">
+                <p>Do have any questions or you just want to say Hello</p>
+                <p>You can reach out to us via:</p>
+                <ul class="contact-text">
+                    <li>Our Email: awesoma@mail.com</li>
+                    <li>Our Phone Number: 072345678</li>
+                    <li>Our Address: Nairobi, Waiyaki way, street no 4, Azina Plaza</li>
+                </ul>
             </div>
-            <div class="input-fields-container">
-                <div class="title-field">
-                    <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
-                </div>
-                <div class="author-field">
-                    <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
-                </div>
-                <button type="submit" id="addBtn">Add</button>
-            </div> 
-        </form>
-    </div>
-    
-
-
+        </div>
+        <footer>
+            <p>Copyright Reserved @awesome books 2022</p>
+        </footer>
     <script src="library.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
