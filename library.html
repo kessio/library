@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Books</title>
+    <link rel="stylesheet" href="/library.css">
+</head>
+<body>
+    <div class="books-container">
+        <table class="display-books">
+            <thead>
+                <h1>
+                    All Awesome Books
+                </h1>
+            </thead>
+           <tbody class="book-details">
+            <tr>
+                <td colspan="2">
+                    "Book 1" by Jiggies
+                </td>
+                <td>
+                    <button class="delete-btn">Remove</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    "Book 2" by Tomie
+                </td>
+                <td>
+                    <button class="delete-btn">Remove</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    "Book 3" by Jane
+                </td>
+                <td>
+                    <button class="delete-btn">Remove</button>
+                </td>
+            </tr>
+           </tbody>
+        </table>
+        <hr>
+        <form action="#" id="add-book">
+            <div class="form-heading">
+                <h1>
+                    Add a new book
+                </h1>
+            </div>
+            <div class="input-fields-container">
+                <div class="title-field">
+                    <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
+                </div>
+                <div class="author-field">
+                    <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
+                </div>
+                <div class="isbn-field">
+                    <div class="isbn-field"><input type="text" name="isbn" id="isbn" placeholder="ISBN"><br  /><br /></div>
+                </div>
+                <button type="submit" id="addBtn">Add</button>
+            </div> 
+        </form>
+    </div>
+    
+
+
+    <script src="/libClasses.js"></script>
+</body>
+</html>
