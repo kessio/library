@@ -68,18 +68,31 @@ UserInterface.displayBooks();
 
 // Events: Add books
 const form = document.getElementById('add-book');
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (e) => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const id = UserInterface.generateID();
-  // Instatiate class
-  const addedBooks = new Books(title, author, id);
 
-  // Add book to local storage
-  BookStorage.addBookToLocalStorage(addedBooks);
-  // Render the books added
-  UserInterface.renderBooks(addedBooks);
+  // Validate form before creating book object
+  const errorMsg = document.querySelector('.error');
+  if (title.length !== 0) {
+    if (author.length !== 0) {
+      // Instatiate class
+      const addedBooks = new Books(title, author, id);
+      // Add book to local storage
+      BookStorage.addBookToLocalStorage(addedBooks);
+      // Render the books added
+      UserInterface.renderBooks(addedBooks);
+    } else {
+      errorMsg.textContent = 'Author field must be filled in!';
+      e.preventDefault();
+    }
+  } else {
+    errorMsg.textContent = 'Book title must be filled in!';
+    e.preventDefault();
+  }
 });
+
 // Events Remove books
 const removeBook = document.querySelectorAll('.delete-btn');
 removeBook.forEach((element) => {
