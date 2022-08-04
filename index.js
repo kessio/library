@@ -1,21 +1,3 @@
-const menuItems = document.querySelectorAll('.menu-items');
-const container = document.querySelectorAll('.container');
-
-menuItems.forEach((navLink) => {
-    navLink.addEventListener('click', (e) => {
-        // console.log(e.target.className);
-        const linkID = e.target.className;
-
-        container.forEach((section) => {
-            console.log(section.id)
-            section.classList.remove('active');
-            if(section.id === linkID) {
-                section.classList.add('active');
-            }
-        });
-    });
-})
-
 /* eslint-disable max-classes-per-file */
 class Books {
   constructor(title, author, id) {
@@ -93,18 +75,17 @@ form.addEventListener('submit', (e) => {
 
   // Validate form before creating book object
   const errorMsg = document.getElementById('error');
-  if(title.length === 0 || author.length === 0) {
+  if (title.length === 0 || author.length === 0) {
     e.preventDefault();
-    errorMsg.textContent = 'All fields must be filled in!'
+    errorMsg.textContent = 'All fields must be filled in!';
   }
-  
-      // Instatiate class
-      const addedBooks = new Books(title, author, id);
-      // Add book to local storage
-      BookStorage.addBookToLocalStorage(addedBooks);
-      // Render the books added
-      UserInterface.renderBooks(addedBooks);
-   
+
+  // Instatiate class
+  const addedBooks = new Books(title, author, id);
+  // Add book to local storage
+  BookStorage.addBookToLocalStorage(addedBooks);
+  // Render the books added
+  UserInterface.renderBooks(addedBooks);
 });
 
 // Events Remove books
@@ -115,5 +96,20 @@ removeBook.forEach((element) => {
     const removeid = e.target.id;
     BookStorage.RemoveBookFromLocalStorage(removeid);
     button.parentElement.parentElement.remove();
+  });
+});
+
+const menuItems = document.querySelectorAll('.menu-items');
+const container = document.querySelectorAll('.container');
+
+menuItems.forEach((navLink) => {
+  navLink.addEventListener('click', (e) => {
+    const linkID = e.target.className;
+    container.forEach((section) => {
+      section.classList.remove('active');
+      if (section.id === linkID) {
+        section.classList.add('active');
+      }
+    });
   });
 });
