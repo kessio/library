@@ -29,13 +29,25 @@
         </table>
         <hr>
     </section>
-     <form action="#" id="add-book">
-        <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
-        <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
-        <div class="isbn-field"><input type="text" name="isbn" id="isbn" placeholder="ISBN"><br  /><br /></div>
-        <small class="error"></small> <br>
-        <button type="submit" id="addBtn">Add</button>
-     </form>
+    <section id="addBook" class="container">
+        <form action="#" id="add-book">
+            <div class="form-heading">
+                <h1>
+                    Add a new book
+                </h1>
+            </div>
+            <div class="input-fields-container">
+                <div class="title-field">
+                    <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
+                </div>
+                <div class="author-field">
+                    <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
+                </div>
+                <small id="error"></small> <br>
+                <button type="submit" id="addBtn">Add</button>
+            </div> 
+        </form>
+    </section>
      <script src="main.js"></script>
 </body>
 </html>
