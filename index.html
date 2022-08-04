@@ -5,19 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWesome Library</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-
-    <h1>Awesome Books</h1>
-    <div class="display-books">
-    </div>
-     <form action="#" id="add-book">
-        <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
-        <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
-        <div class="isbn-field"><input type="text" name="isbn" id="isbn" placeholder="ISBN"><br  /><br /></div>
-        <small class="error"></small> <br>
-        <button type="submit" id="addBtn">Add</button>
-     </form>
-     <script src="main.js"></script>
+    <nav>
+        <div class="nav-brand">Awesome Books</div>
+        <div class="navigation-menu">
+            <ul class="nav-list">
+                <li class="menu-items"><a href="#" class="list-books">List</a></li>
+                <li class="menu-items"><a href="#" class="addBook">Add New</a></li>
+                <li class="menu-items"><a href="#" class="contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="list-books" class="container active">
+        <h1>
+            All Awesome Books
+        </h1>
+        <table class="display-books">
+           <tbody class="book-details">
+           </tbody>
+        </table>
+        <hr>
+    </section>
+    <section id="addBook" class="container">
+        <form action="#" id="add-book">
+            <div class="form-heading">
+                <h1>
+                    Add a new book
+                </h1>
+            </div>
+            <div class="input-fields-container">
+                <div class="title-field">
+                    <input type="text" name="title" id="title" placeholder="Title"> <br  /><br />
+                </div>
+                <div class="author-field">
+                    <input type="text" name="author" id="author" placeholder="Author"><br  /><br />
+                </div>
+                <small id="error"></small> <br>
+                <button type="submit" id="addBtn">Add</button>
+            </div> 
+        </form>
+    </section>
+    <section id="contact" class="container">
+        <h1>Contact information</h1>
+        <div class="contact-details">
+            <p>Do have any questions or you just want to say Hello</p>
+            <p>You can reach out to us via:</p>
+            <ul class="contact-text">
+                <li>Our Email: awesoma@mail.com</li>
+                <li>Our Phone Number: 072345678</li>
+                <li>Our Address: Nairobi, Waiyaki way, street no 4, Azina Plaza</li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <p>Copyright Reserved @awesome books 2022</p>
+    </footer>
+     <script src="index.js"></script>
 </body>
 </html>
