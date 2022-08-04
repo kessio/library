@@ -93,23 +93,19 @@ form.addEventListener('submit', (e) => {
   const id = UserInterface.generateID();
 
   // Validate form before creating book object
-  const errorMsg = document.querySelector('.error');
-  if (title.length !== 0) {
-    if (author.length !== 0) {
+  const errorMsg = document.getElementById('error');
+  if(title.length === 0 || author.length === 0) {
+    e.preventDefault();
+    errorMsg.textContent = 'All fields must be filled in!'
+  }
+  
       // Instatiate class
       const addedBooks = new Books(title, author, id);
       // Add book to local storage
       BookStorage.addBookToLocalStorage(addedBooks);
       // Render the books added
       UserInterface.renderBooks(addedBooks);
-    } else {
-      errorMsg.textContent = 'Author field must be filled in!';
-      e.preventDefault();
-    }
-  } else {
-    errorMsg.textContent = 'Book title must be filled in!';
-    e.preventDefault();
-  }
+   
 });
 
 // Events Remove books
