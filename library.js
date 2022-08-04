@@ -68,10 +68,17 @@ UserInterface.displayBooks();
 
 // Events: Add books
 const form = document.getElementById('add-book');
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (e) => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
+  const errorMsg = document.getElementById('error');
   const id = UserInterface.generateID();
+
+  // Form validation
+  if(title.length === 0 || author.length === 0) {
+    e.preventDefault();
+    errorMsg.textContent = 'All fields must be filled in!'
+  }
   // Instatiate class
   const addedBooks = new Books(title, author, id);
 
